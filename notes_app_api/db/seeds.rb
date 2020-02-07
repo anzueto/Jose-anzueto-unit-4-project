@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Note.create([
+    {author: "Jose", content: "clean house"},
+    {author: "Jose", content: "take out trash"},
+    {author: "Jose", content: "clean bunnies"},
+    {author: "Jose", content: "laundry"},
+    {author: "Jose", content: "homework"},
+])
+
+puts "Seeded database"

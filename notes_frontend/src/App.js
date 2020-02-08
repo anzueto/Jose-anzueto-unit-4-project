@@ -30,12 +30,41 @@ class App extends Component {
     this.setState(updateInput)
   }
 
+  handleSubmit = event => {
+    // preventing reseting form on change
+    event.preventDefault()
+    fetch('http://localhost:3000/notes',
+      {
+        body: JSON.stringify(this.state.formInputs),
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(createdNote => {
+        return createdNote.json()
+      })
+      .then(jsonedNote => {
+        // reset the form
+        // add notes to notes
+        this.setState({
+          formInputs: {
+            content: '',
+            author: ''
+          },
+          notes: { jsonedNote, ...this.state.notes }
+        })
+      })
+      .catch(error => console.log(error))
+  }
+
 
   render() {
     return (
       <div className="App">
 
-        <Notes content={this.state.notes} />
+        <Notes notes={this.state.notes} />
         <p>Add new Reminder</p>
 
         <form onSubmit={this.handleSubmit}>

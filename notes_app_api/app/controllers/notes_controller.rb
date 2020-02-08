@@ -3,7 +3,8 @@ class NotesController < ApplicationController
 
   # GET /notes
   def index
-    @notes = Note.all
+    # want the newer notes to show first. we use reverse
+    @notes = Note.all.reverse
 
     render json: @notes
   end

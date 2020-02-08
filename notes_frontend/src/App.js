@@ -24,8 +24,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <p>notes</p>
+
         <Notes content={this.state.notes} />
+        <p>Add new Reminder</p>
+
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="content">Content</label>
+          <input type="text" id="content" value={this.state.formInputs.content} onChange={this.handleChange} />
+
+          <label htmlFor="author">Author</label>
+          <input type="text" id="author" value={this.state.formInputs.content} onChange={this.handleChange} />
+
+          <input type="submit" className="submit" />
+        </form>
 
       </div>
     )

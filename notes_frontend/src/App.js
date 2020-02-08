@@ -5,7 +5,11 @@ import Notes from './components/Notes.js';
 
 class App extends Component {
   state = {
-    notes: []
+    notes: [],
+    formInputs: {
+      author: '',
+      content: ''
+    }
   }
 
   componentDidMount() {
@@ -18,6 +22,12 @@ class App extends Component {
       .then(response => response.json())
       .then(json => this.setState({ notes: json }))
       .catch(error => console.log(error))
+  }
+
+
+  handleChange = event => {
+    const updateInput = Object.assign(this.state.formInputs, { [event.target.id]: event.target.value })
+    this.setState(updateInput)
   }
 
 

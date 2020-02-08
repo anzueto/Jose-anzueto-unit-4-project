@@ -9,6 +9,8 @@ class Notes extends Component {
                     return (
                         <div key={note.id} className="note">
                             <h3>{note.content}</h3>
+                            <button>edit</button>
+                            <button>delete</button>
                             <p>{note.author}</p>
                         </div>
                     )

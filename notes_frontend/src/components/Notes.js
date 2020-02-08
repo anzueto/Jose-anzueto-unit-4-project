@@ -6,21 +6,19 @@ class Notes extends Component {
         notes: []
     }
 
-    componentDidMount() {
-        this.getNotes()
-    }
-
-    getNotes = () => {
-        fetch('http://localhost:3000/notes')
-            .then(response => response.json())
-            .then(json => console.log(json))
-            .catch(error => console.log(error))
-    }
-
-
     render() {
         return (
-            <h1>Notes Reminders</h1>
+            <div>
+                {this.props.content.map(note => {
+                    return (
+                        <div key={note.id} className="note">
+
+                            <h3>{note.content}</h3>
+                            <p>{note.author}</p>
+                        </div>
+                    )
+                })}
+            </div>
         )
     }
 }

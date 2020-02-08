@@ -24,7 +24,7 @@ class App extends Component {
       .catch(error => console.log(error))
   }
 
-
+  // allows us to type in the input fields
   handleChange = event => {
     const updateInput = Object.assign(this.state.formInputs, { [event.target.id]: event.target.value })
     this.setState(updateInput)
@@ -50,10 +50,10 @@ class App extends Component {
         // add notes to notes
         this.setState({
           formInputs: {
-            content: '',
-            author: ''
+            author: '',
+            content: ''
           },
-          notes: { jsonedNote, ...this.state.notes }
+          notes: [jsonedNote, ...this.state.notes]
         })
       })
       .catch(error => console.log(error))
@@ -63,19 +63,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
-        <Notes notes={this.state.notes} />
-        <p>Add new Reminder</p>
+        <h2>Add a new reminder</h2>
 
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="content">Content</label>
           <input type="text" id="content" value={this.state.formInputs.content} onChange={this.handleChange} />
 
           <label htmlFor="author">Author</label>
-          <input type="text" id="author" value={this.state.formInputs.content} onChange={this.handleChange} />
+          <input type="text" id="author" value={this.state.formInputs.author} onChange={this.handleChange} />
 
           <input type="submit" className="submit" />
         </form>
+
+        <Notes notes={this.state.notes} />
 
       </div>
     )

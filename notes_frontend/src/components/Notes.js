@@ -2,14 +2,10 @@ import React, { Component } from 'react';
 
 class Notes extends Component {
 
-    state = {
-        notes: []
-    }
-
     render() {
         return (
-            <div>
-                {this.props.content.map(note => {
+            <>
+                {this.props.notes.map(note => {
                     return (
                         <div key={note.id} className="note">
 
@@ -18,7 +14,7 @@ class Notes extends Component {
                         </div>
                     )
                 })}
-            </div>
+            </>
         )
     }
 }

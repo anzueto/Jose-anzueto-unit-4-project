@@ -8,7 +8,6 @@ class Notes extends Component {
                 {this.props.notes.map(note => {
                     return (
                         <div key={note.id} className="note">
-
                             <h3>{note.content}</h3>
                             <p>{note.author}</p>
                         </div>
